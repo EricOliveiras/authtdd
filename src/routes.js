@@ -1,5 +1,5 @@
-import { Router } from "express.";
+const express = require('express')
 
-const routes = Router();
+const routes = express.Router();
 
-export default routes;
+module.exports = routes;
