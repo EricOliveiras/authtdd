@@ -8,8 +8,6 @@ describe("Authentication", () => {
       password_hash: "123456",
     });
 
-    console.log(user);
-
     exprect(user.email).toBe("eric@email.com");
   });
 });
