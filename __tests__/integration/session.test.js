@@ -1,13 +1,16 @@
 const User = require('../../src/database/models/User');
+require('../../src/database/')
 
-describe("Authentication", () => {
-  it("should create a user in database", async () => {
+describe('Authentication', () => {
+  it('should create user', async () => {
     const user = await User.create({
-      name: "Eric",
-      email: "eric@email.com",
-      password_hash: "123456",
+      name: 'Eric',
+      email: 'eric@email.com',
+      password_hash: '123456',
     });
+      
+    console.log(user);
 
-    exprect(user.email).toBe("eric@email.com");
+    expect(email).toBe('eric@email.com');
   });
 });

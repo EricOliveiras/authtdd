@@ -5,6 +5,7 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const config = require('../config/database');
+const User = require('./models/User');
 const db = {};
 
 const sequelize = new Sequelize(config);
@@ -12,6 +13,8 @@ const sequelize = new Sequelize(config);
 sequelize.authenticate()
   .then(() => console.log('Connection has been established successfully.'))
   .catch(() => console.log('Unable to connect to the database:', err));
+
+User.init(sequelize);
 
 fs
   .readdirSync(__dirname)
