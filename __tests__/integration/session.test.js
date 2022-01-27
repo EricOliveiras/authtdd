@@ -11,6 +11,6 @@ describe('Authentication', () => {
       
     console.log(user);
 
-    expect(email).toBe('eric@email.com');
+    expect(user.name).toBe('Eric'); 
   });
 });

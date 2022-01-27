@@ -1,15 +1,20 @@
 const { Model, DataTypes } = require("sequelize");
 
-class User extends Model {}
+class User extends Model {
+  static init(sequelize) {
+    super.init(
+      {
+        name: DataTypes.STRING,
+        email: DataTypes.STRING,
+        password_hash: DataTypes.STRING,
+      },
+      {
+        sequelize,
+      }
+    );
 
-User.init({
-  name: DataTypes.STRING,
-  email: DataTypes.STRING,
-  password_hash: DataTypes.STRING, 
-}), {
-  sequelize: Sequelize,
+    return this;
+  }
 }
-
-User.sync();
 
 module.exports = User;
