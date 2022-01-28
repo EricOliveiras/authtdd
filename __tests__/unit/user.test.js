@@ -1,9 +1,7 @@
 const bcrypt = require('bcryptjs');
 
-const User = require('../../src/database/models/User');
+const factory = require('../factories');
 const truncate = require('../utils/truncate');
-
-require('../../src/database')
 
 describe('User', () => {
   beforeEach(async () => {
@@ -11,11 +9,7 @@ describe('User', () => {
   });
 
   it('should encrypt user password', async () => {
-    const user = await User.create({
-      name: 'Eric',
-      email: 'eric@email.com',
-      password: '123456',
-    });
+    const user = await factory.create('User')
 
     const compareHash = await bcrypt.compare('123456', user.password_hash);
 
