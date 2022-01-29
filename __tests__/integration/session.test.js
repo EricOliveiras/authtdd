@@ -10,12 +10,16 @@ describe('Authentication', () => {
   });
 
   it('should authentication with valid credential', async () => {
-    const user = await factory.create('User');
+    const user = await factory.create('User', {
+      password: '123456',
+    });
+
+    console.log(user);
 
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'eric@email.com',
+        email: user.email,
         password: '123456',
       });
 
@@ -25,12 +29,14 @@ describe('Authentication', () => {
   });
 
   it('should not authentication with invalid credential', async () => {
-    const user = await factory.create('User')
+    const user = await factory.create('User', {
+      password: '123456',
+    });
 
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'eric@email.com',
+        email: user.email,
         password: '123451',
       });
 
@@ -39,12 +45,14 @@ describe('Authentication', () => {
   });
 
   it('should return jwt token when authenticated', async () => {
-    const user = await factory.create('User')
+    const user = await factory.create('User', {
+      password: '123456',
+    });
 
     const response = await request(app)
       .post('/sessions')
       .send({
-        email: 'eric@email.com',
+        email: user.email,
         password: '123456',
       });
 
