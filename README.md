@@ -1,2 +1,2 @@
 
-Learning to create tests with jest with node.js and javascript
+Learning to create tests with jest, node.js and javascript
